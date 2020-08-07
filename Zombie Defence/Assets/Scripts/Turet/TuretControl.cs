@@ -4,30 +4,35 @@ using UnityEngine;
 
 public class TuretControl : MonoBehaviour
 {
+    #region variable
+    // Variable to store all enemies and then, we'll use that to find the nearest enemy
     public GameObject[] targetComplex;
 
+    // The nearest enemy will be stored here
     private GameObject target;
 
+    // Variable for future turet rotating
     public GameObject turetHead;
 
+    // Variables for smooth turet rotating
     public float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
 
     public float turetRange = 10f;
+    #endregion
 
-    // Start is called before the first frame update
+    #region methods
     void Start()
     {
         targetComplex = GameObject.FindGameObjectsWithTag("Enemy");
     }
 
-    // Update is called once per frame
     void Update()
     {
         selectNearTarget();
-        
     }
 
+    // This method will select the nearest enemy
     private void selectNearTarget()
     {
         float lenght;
@@ -43,6 +48,8 @@ public class TuretControl : MonoBehaviour
             }
         }
     }
+
+    // This method will rotate the turet to the nearest enemy
     void TuretRotate()
     {
         if(Vector3.Distance(turetHead.transform.position, target.transform.position) <= turetRange)
@@ -53,5 +60,5 @@ public class TuretControl : MonoBehaviour
             turetHead.transform.rotation = Quaternion.Euler(0f, angle, 0f);
         }
     }
-
+    #endregion
 }

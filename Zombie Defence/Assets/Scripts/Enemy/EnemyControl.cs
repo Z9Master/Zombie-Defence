@@ -5,23 +5,25 @@ using UnityEngine.AI;
 
 public class EnemyControl : MonoBehaviour
 {
+    #region Variable
     public NavMeshAgent agent;
 
     public GameObject targetPlayer;
     public GameObject targetTuret;
+    #endregion
 
-    // Start is called before the first frame update
+    #region Methods
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         MoveToPlayer();
     }
 
+    // Enemy will folow the player/turet, it depends on that, if the player is nearer or the turet is nearer
     private void MoveToPlayer()
     {
         if(Vector3.Distance(transform.position, targetPlayer.transform.position) < Vector3.Distance(transform.position, targetTuret.transform.position))
@@ -33,4 +35,5 @@ public class EnemyControl : MonoBehaviour
             agent.SetDestination(targetTuret.transform.position);
         }
     }
+    #endregion
 }
