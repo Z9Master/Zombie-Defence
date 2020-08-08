@@ -49,7 +49,7 @@ public class TuretControl : MonoBehaviour
             {
                 nearest = lenght;
                 target = tg;
-                TuretRotate();
+                //TuretRotate();
             }
         }
     }
@@ -88,10 +88,10 @@ public class TuretControl : MonoBehaviour
     private void GranadeShot()
     {
         Vector3 Vo = CalculateVelocity(target.transform.position, shotPoint.transform.position, 1f);
-
+        turetHead.transform.rotation = Quaternion.LookRotation(Vo);
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Rigidbody obj = Instantiate(granade, shotPoint.transform.position, Quaternion.identity);
+            Rigidbody obj = Instantiate(granade, shotPoint.position, Quaternion.identity);
             obj.velocity = Vo;
         }
         
