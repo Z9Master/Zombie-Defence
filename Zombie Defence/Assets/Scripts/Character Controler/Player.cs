@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     #region Variables
     public CharacterController playerController;
 
-    public float PlayerSpeed = 3f;
+    public float PlayerSpeed = 2.6f;
 
     // Cache speed variable for correct speed control
     private float speed;
@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
         selectNearTarget();
         PlayerMove();
         FocusAtEnemy();
+        
     }
 
     // This method will search for the nearest enemy from targetComplex collection
@@ -104,6 +105,18 @@ public class Player : MonoBehaviour
             speed = PlayerSpeed;
         }
     }
+
+    //private void Run()
+    //{
+    //    if (Input.GetKey(KeyCode.LeftShift) && Vector3.Distance(transform.position, target.transform.position) < detectorRange && !isLooking)
+    //    {
+    //        speed = 3f;
+    //    }
+    //    else if (Input.GetKeyUp(KeyCode.LeftShift))
+    //    {
+    //        speed = PlayerSpeed;
+    //    }
+    //}
     #endregion
 
     #region old_codes

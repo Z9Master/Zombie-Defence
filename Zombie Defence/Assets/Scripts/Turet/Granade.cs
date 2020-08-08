@@ -19,12 +19,16 @@ public class Granade : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        ExplodeGranade();
+        if (collision.collider.tag.Equals("Ground") || collision.collider.tag.Equals("Enemy"))
+        {
+            ExplodeGranade();
+        }
+        
     }
 
     private void ExplodeGranade()
     {
         Instantiate(explosionEffect, transform.position, transform.rotation);
-        Destroy(gameObject);
+        Destroy(gameObject, 0.5f);
     }
 }
